@@ -72,10 +72,8 @@ class Spider():
         pageContent=r.text
         return pageContent
 #第二步
-    def getAllNum(self,date):
-        #1无内容  2只有1页  3 1—200页  4 200页以上  
+    def getAllNum(self,date): 
         firstContent=self.getPageContent(1,date)
-        
         if u'没有检索到相关数据' in firstContent:
             print (date,'have','0 page')
             return 0
