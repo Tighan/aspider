@@ -15,10 +15,6 @@ class Spider():
                          'TAB_QuerySubmitOrderData':'282:False',
                           #第几页
                          'TAB_QuerySubmitPagerData':''} 
-                         
-
-        self.rowName=[u'行政区',u'电子监管号',u'项目名称',u'项目位置',u'面积(公顷)',u'土地来源',u'土地用途',u'供地方式',u'土地使用年限',u'行业分类',u'土地级别',u'成交价格(万元)',u'土地使用权人',u'约定容积率下限',u'约定容积率上限',u'约定交地时间',u'约定开工时间',u'约定竣工时间',u'实际开工时间',u'实际竣工时间',u'批准单位',u'合同签订日期']
-        #这是要抓取的数据，我把除了分期约定那四项以外的都抓取了
         self.info=[   
                 'mainModuleContainer_1855_1856_ctl00_ctl00_p1_f1_r1_c2_ctrl',#0
                 'mainModuleContainer_1855_1856_ctl00_ctl00_p1_f1_r1_c4_ctrl',#1
@@ -46,7 +42,6 @@ class Spider():
                 'mainModuleContainer_1855_1856_ctl00_ctl00_p1_f1_r10_c4_ctrl',                
                 'mainModuleContainer_1855_1856_ctl00_ctl00_p1_f1_r14_c2_ctrl',
                 'mainModuleContainer_1855_1856_ctl00_ctl00_p1_f1_r14_c4_ctrl']
-#第一步
     def handleDate(self,year,month,day):
         #返回日期数据
         'return date format %Y-%m-%d'
