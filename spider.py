@@ -1,3 +1,4 @@
+
 import re,httplib2,datetime,sqlite3
 import requests
 from bs4 import BeautifulSoup
@@ -71,11 +72,12 @@ class Spider():
         r=requests.post(self.url,data=postData,timeout=30)
         pageContent=r.text
         return pageContent
-    def getAllNum(self,date): 
+    def getAllNum(self,date):
+        te='没有检索到相关数据'
         firstContent=self.getPageContent(1,date)
-        if u'没有检索到相关数据' in firstContent:
+        if te in firstContent:
             return 0
-        pattern=re.compile(u'<td.*?class="pager".*?>共(.*?)页.*?</td>')
+        pattern=re.compile('<td.*?class="pager".*?>共(.*?)页.*?</td>')
         result=re.search(pattern,firstContent)
         if result==None:
             print (date,'have','1 page')
@@ -91,7 +93,7 @@ class Spider():
         'get all links'
         pageContent=self.getPageContent(pageNum,date)
         links=[]
-        pattern=re.compile(u'<a.*?href="default.aspx.*?tabid=386(.*?)".*?>',re.S)
+        pattern=re.compile('<a.*?href="default.aspx.*?tabid=386(.*?)".*?>',re.S)
         results=re.findall(pattern,pageContent)
         for result in results:
             links.append('http://www.landchina.com/default.aspx?tabid=386'+result)
@@ -139,4 +141,5 @@ class Spider():
             data=self.getInfo(linkContent)
             self.saveInfo(data,tablename,cx)
             print ('save info from link',i+1,'/',len(allLinks))
+
         cx.commit()
