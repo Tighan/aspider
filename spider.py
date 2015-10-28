@@ -72,15 +72,9 @@ class Spider():
         r=requests.post(self.url,data=postData,timeout=30)
         pageContent=r.text
         return pageContent
-<<<<<<< HEAD
-    def getAllNum(self,date): 
-        te=u'没有检索到相关数据'
-=======
     def getAllNum(self,date):
-        te='没有检索到相关数据'
->>>>>>> 43d3e72c821ae367c85787fd13c5ffc2ce7fef85
         firstContent=self.getPageContent(1,date)
-        if te in firstContent:
+        if '没有检索到相关数据' in firstContent:
             return 0
         pattern=re.compile('<td.*?class="pager".*?>共(.*?)页.*?</td>')
         result=re.search(pattern,firstContent)

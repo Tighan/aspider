@@ -4,7 +4,7 @@ s=spider.Spider()
 #日期
 cx=sqlite3.connect('spider.db')
 cx.execute('create table nowat (id,month,year)')
-cx.execute('insert into nowat(0,0,0)')
+cx.execute('insert into nowat values(0,0,0)')
 cu=cx.cursor()
 dictyear={1:"一",2:"二",3:"三",4:"四",5:"五",6:"六",7:"七",8:"八",9:"九",0:"零"}
 dictmonth={1:"一",2:"二",3:"三",4:"四",5:"五",6:"六",7:"七",8:"八",9:"九",10:"十",11:"十一",12:"十二"}
@@ -42,7 +42,8 @@ def getData(year1,month1,year2,month2):
             time.sleep(random.random() * 3)
 def restart():
     order=False
-    yam=cu.execute("select * from nowat")[0]
+    cu.execute("select * from nowat")
+    yam=cu.fetchall()[0]
     year=int(yam[1])
     month=int(yam[2])+1
     if month>12:
