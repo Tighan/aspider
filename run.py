@@ -1,5 +1,5 @@
 
-import spider,sqlite3
+import spider,sqlite3,time,random
 s=spider.Spider()
 #日期
 cx=sqlite3.connect('D:\\bl\\spider.db')
@@ -31,6 +31,8 @@ def getData(year1,month1,year2,month2):
         #信息
                 s.saveAllInfo(allLinks,date,tablename,cx)
                 day+=1
-                print(date,'KO!')
-            print (date.strftime('%Y-%m'),'KO!')
+             #   print(date,'KO!')
+            #print (date.strftime('%Y-%m'),'KO!')
+            print ("now at",year,month)
+            time.sleep(random.random() * 3)
 getData(2015,1,2015,1)
